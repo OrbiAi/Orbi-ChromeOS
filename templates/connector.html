@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Orbi Connector</title>
+    <link rel="icon" type="image/x-icon" href="/static/connect.ico">
+</head>
+<body style="font-family: sans-serif; color:aquamarine; background-color:rgb(27, 44, 44);">
+    <h3>Chrome OS Connector</h3>
+    <h1>Orbi</h1>
+    <video 
+    style="
+      max-width: 75%;
+      border: 4px outset darkslategray;"
+    id="video" 
+    autoplay
+  ></video>
+  
+    <script>
+        async function startScreenShare() {
+            const stream = await navigator.mediaDevices.getDisplayMedia({
+                video: true
+            });
+
+            const video = document.getElementById('video');
+            video.srcObject = stream;
+
+            const canvas = document.createElement('canvas');
+            const context = canvas.getContext('2d');
+            
+            const ws = new WebSocket('ws://192.168.88.11:8000');
+
+            setInterval(() => {
+                console.log("Sending screen")
+                canvas.width = video.videoWidth;
+                canvas.height = video.videoHeight;
+
+                context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+                canvas.toBlob((blob) => {
+                    if (blob) {
+                        ws.send(blob);
+                    }
+                }, 'image/jpeg');
+            }, 75000); // 75 seconds
+        }
+
+        startScreenShare();
+    </script>
+</body>
+</html>

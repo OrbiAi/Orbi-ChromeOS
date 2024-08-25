@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head> 
+        <title>Activity Report</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="/static/template.css">
+        <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    </head>
+
+    <body>
+        <main>
+            <div class="top">
+                <div class="backContainer">
+                    <a href="/" title="Back">
+                        <div class="back">
+                            <img class="back" src="/static/arrow.svg">
+                            <p class="back">Back</p>
+                        </div>
+                    </a>
+                </div>
+                <p class="top">{{ date }}, took {{ took }}s</p>
+            </div>
+
+            <h1>Activity Report</h1>
+            <p>Orbi for Chrome OS</p>
+            <p>{{ description }}</p>
+            
+            <img class="capture" alt="User Screenshot" src="{{ img }}">
+        </main>
+    </body>
+</html>
