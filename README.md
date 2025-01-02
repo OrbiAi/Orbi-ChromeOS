@@ -1,3 +1,5 @@
+# Legacy version of Orbi, will be merged into [Orbi-Server](https://github.com/OrbiAi/Orbi-Server)
+
 # UNSTABLE, UNSECURE, UNDOCUMENTED, WIP
 # Orbi for Chrome OS
 ## How to use
